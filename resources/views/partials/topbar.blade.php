@@ -13,16 +13,17 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/">Home</a>
+            <a class="nav-link {{ Request::is('/') ? 'active fw-bold' : '' }}" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/products">Products</a>
+            <a class="nav-link {{ Request::is('products*') ? 'active fw-bold' : '' }}" href="/products">Products</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/categories">Categories</a>
+            <a class="nav-link {{ Request::is('categories*') ? 'active fw-bold' : '' }}"
+              href="/categories">Categories</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
+            <a class="nav-link{{ Request::is('login') ? 'active fw-bold' : '' }}" href="/login">Login</a>
           </li>
         </ul>
       </div>

@@ -14,8 +14,14 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $products = Product::orderBy('name');
+
+        if (request('search')) {
+            $products->where('name', 'like', '%' . request('search') . '%');
+        }
+
         return view('products', [
-            'products' => Product::with(['category'])->get()->all(),
+            'products' => $products->get(),
         ]);
     }
 
