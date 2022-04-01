@@ -23,7 +23,7 @@
               href="/categories">Categories</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link{{ Request::is('login') ? 'active fw-bold' : '' }}" href="/login">Login</a>
+            <a class="nav-link {{ Request::is('login') ? 'active fw-bold' : '' }}" href="/login">Login</a>
           </li>
         </ul>
       </div>
