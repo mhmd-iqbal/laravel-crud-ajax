@@ -22,9 +22,23 @@
             <a class="nav-link {{ Request::is('categories*') ? 'active fw-bold' : '' }}"
               href="/categories">Categories</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link {{ Request::is('login') ? 'active fw-bold' : '' }}" href="/login">Login</a>
-          </li>
+          @auth
+            <form action="/logout" method="POST">
+              @csrf
+              <li class="nav-item">
+                <button type="submit" class="nav-link">Logout</button>
+              </li>
+            </form>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">{{ auth()->user()->name }}</a>
+            </li>
+          @else
+            <li class="nav-item">
+              <a class="nav-link {{ Request::is('login') ? 'active fw-bold' : '' }}" href="/login">Login</a>
+            </li>
+          @endauth
+
         </ul>
       </div>
     </div>

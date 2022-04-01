@@ -20,9 +20,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/products', [ProductController::class, 'index']);
-Route::get('/categories', [CategoryController::class, 'index']);
-Route::get('/categories/{category:slug}', [CategoryController::class, 'show']);
-Route::get('/login', [UserController::class, 'index']);
+Route::get('/products', [ProductController::class, 'index'])->middleware('auth');
+Route::get('/categories', [CategoryController::class, 'index'])->middleware('auth');
+Route::get('/categories/{category:slug}', [CategoryController::class, 'show'])->middleware('auth');
+Route::get('/login', [UserController::class, 'index'])->name('login');
+Route::post('/login', [UserController::class, 'authenticate']);
+Route::post('/logout', [UserController::class, 'logout']);
 Route::get('/register', [UserController::class, 'create']);
 Route::post('/register', [UserController::class, 'store']);
